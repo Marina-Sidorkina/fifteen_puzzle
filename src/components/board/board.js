@@ -2,15 +2,20 @@ import React from 'react';
 import Tile from '../tile';
 import './board.css'
 
-const Board = ({ tiles }) => {
+const Board = ({ coordinates, tiles, onClick }) => {
+  console.log(coordinates);
 
   const elements = tiles.map((tile, index) => {
     return (
-      <li key={ index } className='board-item'>
+      <li 
+        key={ index }
+        className='board-item'
+        datax={coordinates[index].x}
+        datay={coordinates[index].y}
+      >
         <Tile
           data={ tile }
-          index={ index + 1 }
-          onClick={ () => console.log(index) }
+          onClick={ (value) => onClick(value, index) }
         />
       </li>
     );

@@ -12,7 +12,7 @@ export default class App extends Component {
         {x: 0, y: 2}, {x: 1, y: 2}, {x: 2, y: 2}, {x: 3, y: 2},
         {x: 0, y: 3}, {x: 1, y: 3}, {x: 2, y: 3}, {x: 3, y: 3}
       ],
-      tiles: [16, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+      tiles: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
     };
   }
 
@@ -21,6 +21,8 @@ export default class App extends Component {
       <div className="fifteen-puzzle">
         <Board
           tiles={ this.state.tiles }
+          coordinates={ this.state.coordinates }
+          onClick={(value, index) => console.log(value + " " + index)}
         />
       </div>
     );
