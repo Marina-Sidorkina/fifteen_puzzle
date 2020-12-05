@@ -31,16 +31,15 @@ export default class App extends Component {
     });
   }
 
-  onTileClick(value, index) {
+  onTileClick(value, index, cellCoordinates) {
     const emptyTileId = this.state.tiles.indexOf(16);
-    const emptyTileCoords = this.state.coordinates[emptyTileId];
-    const movedTileCoords = this.state.coordinates[index];
+    const emptyCellCoords = this.state.coordinates[emptyTileId];
 
-    if(movedTileCoords.y === emptyTileCoords.y && Math.abs(emptyTileCoords.x - movedTileCoords.x) === 1) {
+    if(cellCoordinates.y === emptyCellCoords.y && Math.abs(emptyCellCoords.x - cellCoordinates.x) === 1) {
 
       this.replaceTiles(emptyTileId, index, value)
 
-    } else if(movedTileCoords.x === emptyTileCoords.x && Math.abs(emptyTileCoords.y - movedTileCoords.y) === 1) {
+    } else if(cellCoordinates.x === emptyCellCoords.x && Math.abs(emptyCellCoords.y - cellCoordinates.y) === 1) {
 
       this.replaceTiles(emptyTileId, index, value)
 

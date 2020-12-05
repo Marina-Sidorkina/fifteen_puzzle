@@ -6,11 +6,7 @@ const Tile = ({ data, onClick }) => {
   const classList = data === 16 ? 'tile zero' : 'tile';
 
   return (
-    <div 
-      className={ classList }
-      id={ value }
-      onClick={ () => onClick(value) }
-    >
+    <div className={ classList } onClick={ () => onClick(value) }>
       { value }
     </div>
   ); 
