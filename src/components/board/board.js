@@ -3,7 +3,6 @@ import Tile from '../tile';
 import './board.css'
 
 const Board = ({ coordinates, tiles, onClick }) => {
-  console.log(coordinates);
 
   const elements = tiles.map((tile, index) => {
     return (
