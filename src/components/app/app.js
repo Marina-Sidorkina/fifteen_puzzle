@@ -16,6 +16,7 @@ export default class App extends Component {
   checkWinner(value) {
     if(value && !this.state.winner) {
       this.setState({ winner: true });
+      alert('WINNER');
     }
   }
 

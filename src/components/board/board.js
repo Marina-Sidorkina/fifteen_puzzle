@@ -3,7 +3,7 @@ import BoardItem from '../board-item';
 import './board.css'
 
 export default class Board extends Component {
-  constructor(checkWinner) {
+  constructor({checkWinner}) {
     super();
 
     this.state = {
@@ -16,8 +16,16 @@ export default class Board extends Component {
       tileValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
     };
 
-    this.checkWinner = checkWinner;
     this.onCellClick = this.onCellClick.bind(this);
+  }
+
+  componentDidUpdate() {
+    const check = this.state.tileValues
+      .every((tile, index) => tile === (index + 1));
+
+    if(check) {
+      this.props.checkWinner(true);
+    };
   }
   
   checkMoveAbility(tileCellId, emptyCellId) {
