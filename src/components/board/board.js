@@ -17,6 +17,7 @@ export default class Board extends Component {
       {x: 0, y: 3}, {x: 1, y: 3}, {x: 2, y: 3}, {x: 3, y: 3}
     ];
 
+    this.emptyCellValue = 16;
     this.onCellClick = this.onCellClick.bind(this);
   }
 
@@ -74,6 +75,7 @@ export default class Board extends Component {
           key={index}
           index={ index }
           tileValue={ tileValue }
+          emptyCellValue={ this.emptyCellValue }
           onClick={ this.onCellClick }
         />
       );
