@@ -7,14 +7,15 @@ export default class Board extends Component {
     super();
 
     this.state = {
-      cellCoordinates: [
-        {x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0},
-        {x: 0, y: 1}, {x: 1, y: 1}, {x: 2, y: 1}, {x: 3, y: 1},
-        {x: 0, y: 2}, {x: 1, y: 2}, {x: 2, y: 2}, {x: 3, y: 2},
-        {x: 0, y: 3}, {x: 1, y: 3}, {x: 2, y: 3}, {x: 3, y: 3}
-      ],
       tileValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
     };
+
+    this.cellCoordinates = [
+      {x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0},
+      {x: 0, y: 1}, {x: 1, y: 1}, {x: 2, y: 1}, {x: 3, y: 1},
+      {x: 0, y: 2}, {x: 1, y: 2}, {x: 2, y: 2}, {x: 3, y: 2},
+      {x: 0, y: 3}, {x: 1, y: 3}, {x: 2, y: 3}, {x: 3, y: 3}
+    ];
 
     this.onCellClick = this.onCellClick.bind(this);
   }
@@ -29,8 +30,8 @@ export default class Board extends Component {
   }
   
   checkMoveAbility(tileCellId, emptyCellId) {
-    const emptyCellCoords = this.state.cellCoordinates[emptyCellId];
-    const tileCellCoords = this.state.cellCoordinates[tileCellId];
+    const emptyCellCoords = this.cellCoordinates[emptyCellId];
+    const tileCellCoords = this.cellCoordinates[tileCellId];
 
     if(emptyCellCoords.y === tileCellCoords.y &&
       Math.abs(emptyCellCoords.x - tileCellCoords.x) === 1) {
