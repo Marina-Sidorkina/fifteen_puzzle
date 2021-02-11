@@ -3,8 +3,8 @@ import './launch-button.css';
 
 const LaunchButton = () => {
   return (
-    <button class="launch-button">
-      <span class="launch-button__text">Начать игру</span>
+    <button className="launch-button">
+      <span className="launch-button__text">Начать игру</span>
     </button>
   );
 }
