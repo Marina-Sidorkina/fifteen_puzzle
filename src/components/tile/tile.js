@@ -1,5 +1,5 @@
 import React from 'react';
-import './tile.css'
+import './tile.css';
 
 const Tile = ({ data, emptyCellValue }) => {
   const value = data === emptyCellValue ? '' : data;

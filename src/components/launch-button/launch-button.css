@@ -1,0 +1,30 @@
+.launch-button {
+  display: block;
+  width: 310px;
+  height: 75px;
+  margin: 0 auto;
+  margin-top: 10px;
+  background-color: #696969;
+  border: none;
+  border-radius: 5px;
+}
+
+.launch-button__text {
+  display: block;
+  font-family: 'Noto Sans', serif;
+  font-size: 35px;
+  font-weight: 700;
+  text-align: center;
+  color: #696969;
+  line-height: 55px;
+  height: 55px;
+  width: 290px;
+  margin: 0 auto;
+  background-color: #98FF98;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.launch-button__text:hover {
+  opacity: 0.7;
+}

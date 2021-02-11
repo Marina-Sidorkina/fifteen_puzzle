@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Board from '../board';
+import LaunchButton from '../launch-button';
 
 export default class App extends Component {
   constructor() {
@@ -26,6 +27,7 @@ export default class App extends Component {
         <Board
           checkWinner={ this.checkWinner }
         />
+        <LaunchButton />
       </div>
     );
   }
