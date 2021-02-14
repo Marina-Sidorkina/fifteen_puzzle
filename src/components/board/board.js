@@ -3,7 +3,7 @@ import BoardItem from '../board-item';
 import './board.css'
 
 export default class Board extends Component {
-  constructor({checkWinner}) {
+  constructor({ checkWinner, launchNewGame }) {
     super();
 
     this.state = {
@@ -17,8 +17,17 @@ export default class Board extends Component {
       {x: 0, y: 3}, {x: 1, y: 3}, {x: 2, y: 3}, {x: 3, y: 3}
     ];
 
+    this.checkWinner = checkWinner;
+    this.launchNewGame = launchNewGame;
     this.emptyCellValue = 16;
     this.onCellClick = this.onCellClick.bind(this);
+  }
+
+  componentDidMount() {
+    if(this.launchNewGame) {
+      this.shuffleTiles();
+      this.launchNewGame = false;
+    }
   }
 
   componentDidUpdate() {
@@ -26,8 +35,28 @@ export default class Board extends Component {
       .every((tile, index) => tile === (index + 1));
 
     if(check) {
-      this.props.checkWinner(true);
+      this.checkWinner(true);
     };
+  }
+
+  shuffleTiles() {
+    this.setState(({ tileValues }) => {
+      let array = tileValues.slice();
+
+      for(let i = 0; i < array.length; i++) {
+        let start = 0;
+        let index = Board.generateRandomNumber(start, i);
+        let first = array[i];
+        let second = array[index];
+
+        array.splice(i, 1, second);
+        array.splice(index, 1, first);   
+      }
+
+      return {
+        tileValues: array
+      }
+    });
   }
   
   checkMoveAbility(tileCellId, emptyCellId) {
@@ -91,4 +120,8 @@ export default class Board extends Component {
       </ul>
     )
   }
+
+  static generateRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max + 1 - min) + min);
+  };
 }

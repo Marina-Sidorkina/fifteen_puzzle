@@ -7,7 +7,8 @@ export default class App extends Component {
     super();
 
     this.state = {
-      winner: false
+      winner: false,
+      launchNewGame: true
     };
 
     this.checkWinner = this.checkWinner.bind(this);
@@ -26,8 +27,11 @@ export default class App extends Component {
       <div className="fifteen-puzzle">
         <Board
           checkWinner={ this.checkWinner }
+          launchNewGame={ this.state.launchNewGame }
         />
-        <LaunchButton />
+        <LaunchButton
+          onClick={ () => console.log('СТАРТ') }
+        />
       </div>
     );
   }
