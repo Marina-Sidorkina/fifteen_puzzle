@@ -8,7 +8,7 @@ export default class Score extends Component {
 
   render() {
     return (
-      <div class="score"></div>
+      <div className="score"></div>
     )
   }
 }
