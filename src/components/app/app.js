@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Board from '../board';
 import LaunchButton from '../launch-button';
+import Score from '../score';
 
 export default class App extends Component {
   constructor() {
@@ -49,6 +50,7 @@ export default class App extends Component {
         <LaunchButton
           onClick={ this.onLaunchStatusChange }
         />
+        <Score />
       </div>
     );
   }

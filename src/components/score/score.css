@@ -1,0 +1,9 @@
+.score {
+  width: 310px;
+  height: 75px;
+  margin: 0 auto;
+  margin-top: 10px;
+  background-color: #696969;
+  border: none;
+  border-radius: 5px;
+}

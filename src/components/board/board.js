@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BoardItem from '../board-item';
-import './board.css'
+import './board.css';
 
 export default class Board extends Component {
   constructor({ checkWinner, shuffle }) {
