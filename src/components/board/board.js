@@ -3,7 +3,7 @@ import BoardItem from '../board-item';
 import './board.css'
 
 export default class Board extends Component {
-  constructor({ checkWinner, launchNewGame }) {
+  constructor({ checkWinner, shuffle }) {
     super();
 
     this.state = {
@@ -18,15 +18,15 @@ export default class Board extends Component {
     ];
 
     this.checkWinner = checkWinner;
-    this.launchNewGame = launchNewGame;
+    this.shuffle = shuffle;
     this.emptyCellValue = 16;
     this.onCellClick = this.onCellClick.bind(this);
   }
 
   componentDidMount() {
-    if(this.launchNewGame) {
+    if(this.shuffle) {
+      console.log(this.shuffle);
       this.shuffleTiles();
-      this.launchNewGame = false;
     }
   }
 

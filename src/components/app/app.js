@@ -8,11 +8,27 @@ export default class App extends Component {
 
     this.state = {
       winner: false,
-      launchNewGame: true
+      launchNewGame: false
     };
 
     this.checkWinner = this.checkWinner.bind(this);
+    this.onLaunchStatusChange = this.onLaunchStatusChange.bind(this);
 
+  }
+
+  componentDidUpdate(_, prevState) {
+    if(prevState.launchNewGame) {
+      this.onLaunchStatusChange();
+    }
+  }
+
+  onLaunchStatusChange() {
+    this.setState(({ launchNewGame }) => {
+      const newValue = !launchNewGame;
+      return {
+        launchNewGame: newValue
+      }
+    });
   }
 
   checkWinner(value) {
@@ -27,10 +43,11 @@ export default class App extends Component {
       <div className="fifteen-puzzle">
         <Board
           checkWinner={ this.checkWinner }
-          launchNewGame={ this.state.launchNewGame }
+          shuffle={ this.state.launchNewGame }
+          key={ this.state.launchNewGame }
         />
         <LaunchButton
-          onClick={ () => console.log('СТАРТ') }
+          onClick={ this.onLaunchStatusChange }
         />
       </div>
     );
