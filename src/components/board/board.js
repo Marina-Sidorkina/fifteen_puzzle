@@ -25,7 +25,6 @@ export default class Board extends Component {
 
   componentDidMount() {
     if(this.shuffle) {
-      console.log(this.shuffle);
       this.shuffleTiles();
     }
   }
