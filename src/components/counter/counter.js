@@ -1,14 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './counter.css';
 
-export default class Counter extends Component {
-  constructor() {
-    super();
-  }
-
-  render() {
-    return (
-      <div className="counter">0</div>
-    )
-  }
+const Counter = ({ value }) => {
+  return (
+    <div className="counter">{ value }</div>
+  )
 }
+
+export default Counter;
