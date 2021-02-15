@@ -3,7 +3,7 @@ import BoardItem from '../board-item';
 import './board.css';
 
 export default class Board extends Component {
-  constructor({ checkWinner, shuffle }) {
+  constructor({ checkWinner, shuffle, onTileMove }) {
     super();
 
     this.state = {
@@ -19,6 +19,7 @@ export default class Board extends Component {
 
     this.checkWinner = checkWinner;
     this.shuffle = shuffle;
+    this.onTileMove = onTileMove;
     this.emptyCellValue = 16;
     this.onCellClick = this.onCellClick.bind(this);
   }
@@ -80,6 +81,7 @@ export default class Board extends Component {
       const newArray = tileValues.slice();
       newArray.splice(emptyCellId, 1, tileValue);
       newArray.splice(tileCellId, 1, 16);
+      this.onTileMove();
 
       return {
         tileValues: newArray

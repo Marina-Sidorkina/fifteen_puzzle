@@ -9,10 +9,12 @@ export default class App extends Component {
 
     this.state = {
       winner: false,
-      launchNewGame: false
+      launchNewGame: false,
+      movesCount: 0
     };
 
     this.checkWinner = this.checkWinner.bind(this);
+    this.addMove = this.addMove.bind(this);
     this.onLaunchStatusChange = this.onLaunchStatusChange.bind(this);
 
   }
@@ -21,6 +23,22 @@ export default class App extends Component {
     if(prevState.launchNewGame) {
       this.onLaunchStatusChange();
     }
+  }
+
+  checkWinner(value) {
+    if(value && !this.state.winner) {
+      this.setState({ winner: true });
+      alert('WINNER');
+    }
+  }
+
+  addMove() {
+    this.setState(({ movesCount }) => {
+      const newValue = movesCount + 1;
+      return {
+        movesCount: newValue
+      }
+    });
   }
 
   onLaunchStatusChange() {
@@ -32,13 +50,6 @@ export default class App extends Component {
     });
   }
 
-  checkWinner(value) {
-    if(value && !this.state.winner) {
-      this.setState({ winner: true });
-      alert('WINNER');
-    }
-  }
-
   render() {
     return (
       <div className="fifteen-puzzle">
@@ -46,11 +57,15 @@ export default class App extends Component {
           checkWinner={ this.checkWinner }
           shuffle={ this.state.launchNewGame }
           key={ this.state.launchNewGame }
+          onTileMove={ this.addMove }
         />
         <LaunchButton
           onClick={ this.onLaunchStatusChange }
         />
-        <Score />
+        <Score
+          counterValue={ this.state.movesCount }
+          key={ this.state.movesCount }
+        />
       </div>
     );
   }

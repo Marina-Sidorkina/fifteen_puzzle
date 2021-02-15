@@ -4,15 +4,19 @@ import Counter from '../counter';
 import './score.css';
 
 export default class Score extends Component {
-  constructor() {
+  constructor({ counterValue }) {
     super();
+    this.counterValue = counterValue;
   }
 
   render() {
     return (
       <div className="score">
         <Timer />
-        <Counter />
+        <Counter 
+          value={ this.counterValue }
+          key={ this.counterValue }
+        />
       </div>
     )
   }
