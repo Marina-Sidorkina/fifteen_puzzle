@@ -1,0 +1,13 @@
+.counter {
+  font-family: 'Noto Sans', serif;
+  font-size: 35px;
+  font-weight: 700;
+  text-align: center;
+  color: #696969;
+  line-height: 55px;
+  height: 55px;
+  width: 140px;
+  margin: 0;
+  background-color: #98FF98;
+  border-radius: 5px;
+}

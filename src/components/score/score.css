@@ -1,12 +1,14 @@
 .score {
+  box-sizing: border-box;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
   width: 310px;
   height: 75px;
   margin: 0 auto;
   margin-top: 10px;
+  padding: 0 10px;
   background-color: #696969;
   border: none;
   border-radius: 5px;

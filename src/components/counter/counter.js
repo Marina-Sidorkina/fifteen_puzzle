@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import './timer.css';
+import './counter.css';
 
-export default class Timer extends Component {
+export default class Counter extends Component {
   constructor() {
     super();
   }
 
   render() {
     return (
-      <div className="timer">00:00:00</div>
+      <div className="counter">0</div>
     )
   }
 }
