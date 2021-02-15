@@ -20,7 +20,8 @@ export default class App extends Component {
   }
 
   componentDidUpdate(_, prevState) {
-    if(prevState.launchNewGame) {
+    if(prevState.launchNewGame && 
+        prevState.movesCount === this.state.movesCount) {
       this.onLaunchStatusChange();
     }
   }
