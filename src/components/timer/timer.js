@@ -25,6 +25,7 @@ export default class Timer extends Component {
       scs = (seconds + 1 === 60) ? 0 : seconds + 1;
       mns = (seconds + 1 === 60) ? minutes + 1 : minutes;
       hrs = (mns === 60) ? hrs + 1 : hrs;
+      mns = (mns === 60) ? 0 : mns;
 
       return {
         seconds: scs,
