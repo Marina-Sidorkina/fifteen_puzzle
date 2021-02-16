@@ -6,7 +6,9 @@ import './score.css';
 const Score = ({ counterValue }) => {
   return (
     <div className="score">
-      <Timer />
+      <Timer
+        start={ true }
+      />
       <Counter 
         value={ counterValue }
         key={ counterValue }
