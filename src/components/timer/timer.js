@@ -7,39 +7,48 @@ export default class Timer extends Component {
 
     this.state = {
       seconds: 0,
-      secondsTimer: null,
       minutes: 0,
-      minutesTimer: null,
-      hours: 0,
-      hoursTimer: null
+      hours: 0
     }
 
     this.start = start;
 
   }
 
-  startTimer() {
-    if(this.start) {
-      const secondsTimer = setInterval(() => {
+  tick() {
+    this.setState(({ seconds, minutes }) => {
+      //console.log('Секунды: ' + seconds + ' Минуты: ' + minutes);
+      let scs;
+      let mns;
+      let hrs;
 
-        this.setState(({ seconds }) => {
-          const newValue = seconds++;
-          return { seconds: newValue }
-        });
+      scs = (seconds + 1 === 60) ? 0 : seconds + 1;
+      mns = (seconds + 1 === 60) ? minutes + 1 : minutes;
+      hrs = (mns === 60) ? hrs + 1 : hrs;
 
-      }, 1000);
+      return {
+        seconds: scs,
+        minutes: mns,
+        hours: hrs
+      }
 
-      this.setState({ secondsTimer });
-      this.start = false;
-    }
+    });
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.tick(), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {
     return (
       <div className="timer">
-        <span>{ this.state.hours + ':' }</span>
-        <span>{ this.state.minutes + ':' }</span>
-        <span>{ this.state.seconds }</span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     )
   }
