@@ -16,7 +16,7 @@ export default class App extends Component {
 
     this.checkWinner = this.checkWinner.bind(this);
     this.addMove = this.addMove.bind(this);
-    this.onLaunchStatusChange = this.onLaunchStatusChange.bind(this);
+    this.onNewGameStart = this.onNewGameStart.bind(this);
 
   }
 
@@ -38,7 +38,7 @@ export default class App extends Component {
     }
   }
 
-  onLaunchStatusChange() {
+  onNewGameStart() {
     this.setState(({ gamesCount }) => {
       const newValue = gamesCount + 1;
       return {
@@ -60,7 +60,7 @@ export default class App extends Component {
           stopIndicator={ this.state.stopIndicator }
         />
         <LaunchButton
-          onClick={ this.onLaunchStatusChange }
+          onClick={ this.onNewGameStart }
         />
         <Score
           counterValue={ this.state.movesCount }
