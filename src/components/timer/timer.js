@@ -16,7 +16,7 @@ export default class Timer extends Component {
   }
 
   tick() {
-    this.setState(({ seconds, minutes }) => {
+    this.setState(({ seconds, minutes, hours }) => {
       //console.log('Секунды: ' + seconds + ' Минуты: ' + minutes);
       let scs;
       let mns;
@@ -24,7 +24,7 @@ export default class Timer extends Component {
 
       scs = (seconds + 1 === 60) ? 0 : seconds + 1;
       mns = (seconds + 1 === 60) ? minutes + 1 : minutes;
-      hrs = (mns === 60) ? hrs + 1 : hrs;
+      hrs = (mns === 60) ? hours + 1 : hours;
       mns = (mns === 60) ? 0 : mns;
 
       return {
