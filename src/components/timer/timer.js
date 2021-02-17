@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './timer.css';
 
 export default class Timer extends Component {
-  constructor({ start }) {
+  constructor() {
     super();
 
     this.state = {
@@ -11,7 +11,6 @@ export default class Timer extends Component {
       hours: 0
     }
 
-    this.start = start;
     this.tick = this.tick.bind(this);
   }
 
@@ -44,15 +43,15 @@ export default class Timer extends Component {
   }
 
   render() {
-    let seconds = this.state.seconds < 10 ? '0' + this.state.seconds : this.state.seconds;
-    let minutes = this.state.minutes < 10 ? '0' + this.state.minutes : this.state.minutes;
-    let hours = this.state.hours < 10 ? '0' + this.state.hours : this.state.hours;
+    let scs = this.state.seconds < 10 ? '0' + this.state.seconds : this.state.seconds;
+    let mns = this.state.minutes < 10 ? '0' + this.state.minutes : this.state.minutes;
+    let hrs = this.state.hours < 10 ? '0' + this.state.hours : this.state.hours;
 
     return (
       <div className="timer">
-        <span>{ hours + ':'}</span>
-        <span>{ minutes + ':'}</span>
-        <span>{ seconds }</span>
+        <span>{ hrs + ':'}</span>
+        <span>{ mns + ':'}</span>
+        <span>{ scs }</span>
       </div>
     )
   }

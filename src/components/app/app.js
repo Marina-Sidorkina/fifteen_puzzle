@@ -10,7 +10,6 @@ export default class App extends Component {
     this.state = {
       winner: false,
       launchNewGame: false,
-      timer: true,
       movesCount: 0
     };
 
@@ -47,7 +46,8 @@ export default class App extends Component {
     this.setState(({ launchNewGame }) => {
       const newValue = !launchNewGame;
       return {
-        launchNewGame: newValue
+        launchNewGame: newValue,
+        movesCount: 0
       }
     });
   }
@@ -66,7 +66,7 @@ export default class App extends Component {
         />
         <Score
           counterValue={ this.state.movesCount }
-          timer={ this.state.timer }
+          launchNewGame={ this.state.launchNewGame }
         />
       </div>
     );

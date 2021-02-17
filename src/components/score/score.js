@@ -3,11 +3,11 @@ import Timer from '../timer';
 import Counter from '../counter';
 import './score.css';
 
-const Score = ({ counterValue, timer }) => {
+const Score = ({ counterValue, timer, launchNewGame }) => {
   return (
     <div className="score">
       <Timer
-        start={ timer }
+        key={ launchNewGame }
       />
       <Counter 
         value={ counterValue }
