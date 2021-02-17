@@ -12,7 +12,7 @@ export default class Timer extends Component {
     }
 
     this.start = start;
-
+    this.tick = this.tick.bind(this);
   }
 
   tick() {
@@ -37,7 +37,7 @@ export default class Timer extends Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => this.tick(), 1000);
+    this.interval = setInterval(this.tick, 1000);
   }
 
   componentWillUnmount() {
@@ -47,7 +47,7 @@ export default class Timer extends Component {
   render() {
     return (
       <div className="timer">
-        <span></span>
+        <span>{ this.state.seconds }</span>
         <span></span>
         <span></span>
       </div>
