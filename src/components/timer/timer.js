@@ -17,7 +17,6 @@ export default class Timer extends Component {
 
   tick() {
     this.setState(({ seconds, minutes, hours }) => {
-      //console.log('Секунды: ' + seconds + ' Минуты: ' + minutes);
       let scs;
       let mns;
       let hrs;
@@ -45,11 +44,15 @@ export default class Timer extends Component {
   }
 
   render() {
+    let seconds = this.state.seconds < 10 ? '0' + this.state.seconds : this.state.seconds;
+    let minutes = this.state.minutes < 10 ? '0' + this.state.minutes : this.state.minutes;
+    let hours = this.state.hours < 10 ? '0' + this.state.hours : this.state.hours;
+
     return (
       <div className="timer">
-        <span>{ this.state.seconds }</span>
-        <span></span>
-        <span></span>
+        <span>{ hours + ':'}</span>
+        <span>{ minutes + ':'}</span>
+        <span>{ seconds }</span>
       </div>
     )
   }
