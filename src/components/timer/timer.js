@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './timer.css';
 
 export default class Timer extends Component {
-  constructor({ control, stopColor }) {
+  constructor({ control, stopIndicator }) {
     super();
 
     this.state = {
@@ -12,7 +12,7 @@ export default class Timer extends Component {
     }
 
     this.control = control;
-    this.stopColor = stopColor;
+    this.stopIndicator = stopIndicator;
     this.tick = this.tick.bind(this);
   }
 
@@ -52,7 +52,7 @@ export default class Timer extends Component {
     let scs = this.state.seconds < 10 ? '0' + this.state.seconds : this.state.seconds;
     let mns = this.state.minutes < 10 ? '0' + this.state.minutes : this.state.minutes;
     let hrs = this.state.hours < 10 ? '0' + this.state.hours : this.state.hours;
-    let cls = this.stopColor ? ('timer stopColor') : 'timer';
+    let cls = this.stopIndicator ? ('timer stopIndicator') : 'timer';
 
     return (
       <div className={ cls }>

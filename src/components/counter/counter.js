@@ -1,8 +1,8 @@
 import React from 'react';
 import './counter.css';
 
-const Counter = ({ value, stopColor }) => {
-  let cls = stopColor ? ('counter stopColor') : 'counter';
+const Counter = ({ value, stopIndicator }) => {
+  let cls = stopIndicator ? ('counter stopIndicator') : 'counter';
 
   return (
     <div className={ cls }>{ value }</div>

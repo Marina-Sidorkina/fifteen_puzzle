@@ -11,7 +11,7 @@ export default class App extends Component {
       winner: false,
       gamesCount: 0,
       movesCount: 0,
-      stopColor: true
+      stopIndicator: true
     };
 
     this.checkWinner = this.checkWinner.bind(this);
@@ -44,7 +44,7 @@ export default class App extends Component {
       return {
         movesCount: 0,
         gamesCount: newValue,
-        stopColor: false
+        stopIndicator: false
       }
     });
   }
@@ -57,7 +57,7 @@ export default class App extends Component {
           shuffle={ this.state.gamesCount }
           key={ this.state.gamesCount }
           onTileMove={ this.addMove }
-          stopColor={ this.state.stopColor }
+          stopIndicator={ this.state.stopIndicator }
         />
         <LaunchButton
           onClick={ this.onLaunchStatusChange }
@@ -65,7 +65,7 @@ export default class App extends Component {
         <Score
           counterValue={ this.state.movesCount }
           gamesCount={ this.state.gamesCount }
-          stopColor={ this.state.stopColor }
+          stopIndicator={ this.state.stopIndicator }
         />
       </div>
     );

@@ -1,13 +1,13 @@
 import React from 'react';
 import './tile.css';
 
-const Tile = ({ data, emptyCellValue, stopColor }) => {
+const Tile = ({ data, emptyCellValue, stopIndicator }) => {
   let value = data === emptyCellValue ? '' : data;
   let classList = data === emptyCellValue ? 'tile zero' : 'tile';
 
-  classList = stopColor && 
+  classList = stopIndicator && 
     (data !== emptyCellValue) ? 
-    ('stopColor ' + classList) : classList;
+    ('stopIndicator ' + classList) : classList;
 
   return (
     <div className={ classList }>
