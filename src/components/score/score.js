@@ -3,15 +3,17 @@ import Timer from '../timer';
 import Counter from '../counter';
 import './score.css';
 
-const Score = ({ counterValue, timer, launchNewGame }) => {
+const Score = ({ counterValue, timer, gamesCount, stopColor }) => {
   return (
     <div className="score">
       <Timer
-        key={ launchNewGame }
+        key={ gamesCount + 1 }
+        control={ gamesCount }
+        stopColor={ stopColor }
       />
       <Counter 
         value={ counterValue }
-        key={ counterValue }
+        stopColor={ stopColor }
       />
     </div>
   )

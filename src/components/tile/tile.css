@@ -17,6 +17,10 @@
   opacity: 0.7;
 }
 
+.stopColor {
+  background-color: #ff7777;
+}
+
 .zero {
   background-color: transparent;
   cursor: auto;

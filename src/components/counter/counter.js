@@ -1,9 +1,11 @@
 import React from 'react';
 import './counter.css';
 
-const Counter = ({ value }) => {
+const Counter = ({ value, stopColor }) => {
+  let cls = stopColor ? ('counter stopColor') : 'counter';
+
   return (
-    <div className="counter">{ value }</div>
+    <div className={ cls }>{ value }</div>
   )
 }
 

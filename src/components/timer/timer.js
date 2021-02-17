@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './timer.css';
 
 export default class Timer extends Component {
-  constructor() {
+  constructor({ control, stopColor }) {
     super();
 
     this.state = {
@@ -11,6 +11,8 @@ export default class Timer extends Component {
       hours: 0
     }
 
+    this.control = control;
+    this.stopColor = stopColor;
     this.tick = this.tick.bind(this);
   }
 
@@ -35,20 +37,25 @@ export default class Timer extends Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(this.tick, 1000);
+    if(this.control !== 0) {
+      this.interval = setInterval(this.tick, 1000);
+    }
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval);
+    if(this.control !== 0) {
+      clearInterval(this.interval);
+    }
   }
 
   render() {
     let scs = this.state.seconds < 10 ? '0' + this.state.seconds : this.state.seconds;
     let mns = this.state.minutes < 10 ? '0' + this.state.minutes : this.state.minutes;
     let hrs = this.state.hours < 10 ? '0' + this.state.hours : this.state.hours;
+    let cls = this.stopColor ? ('timer stopColor') : 'timer';
 
     return (
-      <div className="timer">
+      <div className={ cls }>
         <span>{ hrs + ':'}</span>
         <span>{ mns + ':'}</span>
         <span>{ scs }</span>

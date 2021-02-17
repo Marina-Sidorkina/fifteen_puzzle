@@ -9,21 +9,15 @@ export default class App extends Component {
 
     this.state = {
       winner: false,
-      launchNewGame: false,
-      movesCount: 0
+      gamesCount: 0,
+      movesCount: 0,
+      stopColor: true
     };
 
     this.checkWinner = this.checkWinner.bind(this);
     this.addMove = this.addMove.bind(this);
     this.onLaunchStatusChange = this.onLaunchStatusChange.bind(this);
 
-  }
-
-  componentDidUpdate(_, prevState) {
-    if(prevState.launchNewGame && 
-        prevState.movesCount === this.state.movesCount) {
-      this.onLaunchStatusChange();
-    }
   }
 
   checkWinner(value) {
@@ -34,20 +28,23 @@ export default class App extends Component {
   }
 
   addMove() {
-    this.setState(({ movesCount }) => {
-      const newValue = movesCount + 1;
-      return {
-        movesCount: newValue
-      }
-    });
+    if(this.state.gamesCount !== 0) {
+      this.setState(({ movesCount }) => {
+        const newValue = movesCount + 1;
+        return {
+          movesCount: newValue
+        }
+      });
+    }
   }
 
   onLaunchStatusChange() {
-    this.setState(({ launchNewGame }) => {
-      const newValue = !launchNewGame;
+    this.setState(({ gamesCount }) => {
+      const newValue = gamesCount + 1;
       return {
-        launchNewGame: newValue,
-        movesCount: 0
+        movesCount: 0,
+        gamesCount: newValue,
+        stopColor: false
       }
     });
   }
@@ -57,16 +54,18 @@ export default class App extends Component {
       <div className="fifteen-puzzle">
         <Board
           checkWinner={ this.checkWinner }
-          shuffle={ this.state.launchNewGame }
-          key={ this.state.launchNewGame }
+          shuffle={ this.state.gamesCount }
+          key={ this.state.gamesCount }
           onTileMove={ this.addMove }
+          stopColor={ this.state.stopColor }
         />
         <LaunchButton
           onClick={ this.onLaunchStatusChange }
         />
         <Score
           counterValue={ this.state.movesCount }
-          launchNewGame={ this.state.launchNewGame }
+          gamesCount={ this.state.gamesCount }
+          stopColor={ this.state.stopColor }
         />
       </div>
     );

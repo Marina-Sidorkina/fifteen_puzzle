@@ -2,7 +2,7 @@ import React from 'react';
 import Tile from '../tile';
 import './board-item.css';
 
-const BoardItem = ({ index, tileValue, onClick, emptyCellValue }) => {
+const BoardItem = ({ index, tileValue, onClick, emptyCellValue, stopColor }) => {
 
   return (
     <li
@@ -13,6 +13,7 @@ const BoardItem = ({ index, tileValue, onClick, emptyCellValue }) => {
       <Tile
         data={ tileValue }
         emptyCellValue={ emptyCellValue }
+        stopColor={ stopColor }
       />
     </li>
   ); 

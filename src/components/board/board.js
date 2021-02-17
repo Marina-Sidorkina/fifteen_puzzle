@@ -3,7 +3,7 @@ import BoardItem from '../board-item';
 import './board.css';
 
 export default class Board extends Component {
-  constructor({ checkWinner, shuffle, onTileMove }) {
+  constructor({ checkWinner, shuffle, onTileMove, stopColor }) {
     super();
 
     this.state = {
@@ -20,17 +20,18 @@ export default class Board extends Component {
     this.checkWinner = checkWinner;
     this.shuffle = shuffle;
     this.onTileMove = onTileMove;
+    this.stopColor = stopColor;
     this.emptyCellValue = 16;
     this.onCellClick = this.onCellClick.bind(this);
   }
 
   componentDidMount() {
-    if(this.shuffle) {
+    if(this.shuffle !== 0) {
       this.shuffleTiles();
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const check = this.state.tileValues
       .every((tile, index) => tile === (index + 1));
 
@@ -107,6 +108,7 @@ export default class Board extends Component {
           tileValue={ tileValue }
           emptyCellValue={ this.emptyCellValue }
           onClick={ this.onCellClick }
+          stopColor={ this.stopColor }
         />
       );
     });
