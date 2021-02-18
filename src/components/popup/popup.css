@@ -1,8 +1,5 @@
 .popup {
   box-sizing: border-box;
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 310px;
   height: 310px;
   margin: 0 auto;

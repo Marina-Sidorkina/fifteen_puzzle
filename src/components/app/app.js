@@ -25,7 +25,6 @@ export default class App extends Component {
   checkWinner(value) {
     if(value && !this.state.winner && this.state.gamesCount) {
       this.setState({ winner: true });
-      alert('WINNER');
     }
   }
 
@@ -54,14 +53,16 @@ export default class App extends Component {
   render() {
     return (
       <div className="fifteen-puzzle">
-        <Popup />
-        <Board
-          key={ this.state.gamesCount }
-          shuffle={ this.state.gamesCount }
-          checkWinner={ this.checkWinner }
-          onTileMove={ this.addMove }
-          stopIndicator={ this.state.stopIndicator }
-        />
+        {this.state.winner
+          ? <Popup />
+          : <Board
+              key={ this.state.gamesCount }
+              shuffle={ this.state.gamesCount }
+              checkWinner={ this.checkWinner }
+              onTileMove={ this.addMove }
+              stopIndicator={ this.state.stopIndicator }
+            />
+        }
         <LaunchButton
           onClick={ this.onNewGameStart }
         />
