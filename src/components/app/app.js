@@ -10,7 +10,7 @@ export default class App extends Component {
     super();
 
     this.state = {
-      winner: false,
+      winner: true,
       gamesCount: 0,
       movesCount: 0,
       stopIndicator: true
@@ -19,7 +19,7 @@ export default class App extends Component {
     this.checkWinner = this.checkWinner.bind(this);
     this.addMove = this.addMove.bind(this);
     this.onNewGameStart = this.onNewGameStart.bind(this);
-
+    this.onPopupClose = this.onPopupClose.bind(this);
   }
 
   checkWinner(value) {
@@ -50,11 +50,22 @@ export default class App extends Component {
     });
   }
 
+  onPopupClose() {
+    this.setState({
+      winner: false,
+      gamesCount: 0,
+      movesCount: 0,
+      stopIndicator: true
+    });
+  }
+
   render() {
     return (
       <div className="fifteen-puzzle">
         {this.state.winner
-          ? <Popup />
+          ? <Popup
+              onClose={ this.onPopupClose }
+            />
           : <Board
               key={ this.state.gamesCount }
               shuffle={ this.state.gamesCount }
