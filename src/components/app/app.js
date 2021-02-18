@@ -10,7 +10,7 @@ export default class App extends Component {
     super();
 
     this.state = {
-      winner: true,
+      winner: false,
       gamesCount: 0,
       movesCount: 0,
       stopIndicator: true
@@ -24,7 +24,9 @@ export default class App extends Component {
 
   checkWinner(value) {
     if(value && !this.state.winner && this.state.gamesCount) {
-      this.setState({ winner: true });
+      this.setState({ 
+        winner: true
+      });
     }
   }
 
@@ -43,6 +45,7 @@ export default class App extends Component {
     this.setState(({ gamesCount }) => {
       const newValue = gamesCount + 1;
       return {
+        winner: false,
         movesCount: 0,
         gamesCount: newValue,
         stopIndicator: false
@@ -81,6 +84,7 @@ export default class App extends Component {
           counterValue={ this.state.movesCount }
           gamesCount={ this.state.gamesCount }
           stopIndicator={ this.state.stopIndicator }
+          winner={ this.state.winner }
         />
       </div>
     );
