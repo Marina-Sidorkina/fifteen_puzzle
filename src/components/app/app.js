@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Board from '../board';
 import LaunchButton from '../launch-button';
 import Score from '../score';
+import Popup from '../popup';
+import './app.css';
 
 export default class App extends Component {
   constructor() {
@@ -21,7 +23,7 @@ export default class App extends Component {
   }
 
   checkWinner(value) {
-    if(value && !this.state.winner) {
+    if(value && !this.state.winner && this.state.gamesCount) {
       this.setState({ winner: true });
       alert('WINNER');
     }
@@ -52,10 +54,11 @@ export default class App extends Component {
   render() {
     return (
       <div className="fifteen-puzzle">
+        <Popup />
         <Board
-          checkWinner={ this.checkWinner }
-          shuffle={ this.state.gamesCount }
           key={ this.state.gamesCount }
+          shuffle={ this.state.gamesCount }
+          checkWinner={ this.checkWinner }
           onTileMove={ this.addMove }
           stopIndicator={ this.state.stopIndicator }
         />
