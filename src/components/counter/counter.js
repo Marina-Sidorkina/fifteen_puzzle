@@ -5,7 +5,9 @@ const Counter = ({ value, stopIndicator }) => {
   let cls = stopIndicator ? ('counter stopIndicator') : 'counter';
 
   return (
-    <div className={ cls }>{ value }</div>
+    <div className={ cls }>
+      { value }
+    </div>
   )
 }
 

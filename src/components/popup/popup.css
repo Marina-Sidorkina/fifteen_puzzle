@@ -1,4 +1,5 @@
 .popup {
+  position: relative;
   box-sizing: border-box;
   width: 310px;
   height: 310px;
