@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './timer.css';
 
 export default class Timer extends Component {
-  constructor({ control, stopIndicator, showFinalScore, winner }) {
+  constructor({ resetStatus, winner }) {
     super();
 
     this.state = {
@@ -11,8 +11,7 @@ export default class Timer extends Component {
       hours: 0
     }
 
-    this.control = control;
-    this.stopIndicator = stopIndicator;
+    this.resetStatus = resetStatus;
     this.tick = this.tick.bind(this);
   }
 
@@ -37,7 +36,7 @@ export default class Timer extends Component {
   }
 
   componentDidMount() {
-    if(this.control) {
+    if(this.resetStatus !== 0) {
       this.interval = setInterval(this.tick, 1000);
     }
   }
@@ -56,7 +55,7 @@ export default class Timer extends Component {
     let scs = this.state.seconds < 10 ? '0' + this.state.seconds : this.state.seconds;
     let mns = this.state.minutes < 10 ? '0' + this.state.minutes : this.state.minutes;
     let hrs = this.state.hours < 10 ? '0' + this.state.hours : this.state.hours;
-    let cls = this.stopIndicator ? ('timer stopIndicator') : 'timer';
+    let cls = (this.resetStatus === 0) ? ('timer stopIndicator') : 'timer';
 
     return (
       <div className={ cls }>

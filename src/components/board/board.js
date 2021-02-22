@@ -3,7 +3,7 @@ import BoardItem from '../board-item';
 import './board.css';
 
 export default class Board extends Component {
-  constructor({ checkWinner, shuffle, onTileMove, stopIndicator }) {
+  constructor({ checkWinner, resetStatus, onTileMove }) {
     super();
 
     this.state = {
@@ -18,15 +18,14 @@ export default class Board extends Component {
     ];
 
     this.checkWinner = checkWinner;
-    this.shuffle = shuffle;
+    this.resetStatus = resetStatus;
     this.onTileMove = onTileMove;
-    this.stopIndicator = stopIndicator;
     this.emptyCellValue = 16;
     this.onCellClick = this.onCellClick.bind(this);
   }
 
   componentDidMount() {
-    if(this.shuffle !== 0) {
+    if(this.resetStatus !== 0) {
       this.shuffleTiles();
     }
   }
@@ -108,7 +107,7 @@ export default class Board extends Component {
           tileValue={ tileValue }
           emptyCellValue={ this.emptyCellValue }
           onClick={ this.onCellClick }
-          stopIndicator={ this.stopIndicator }
+          resetStatus={ this.resetStatus }
         />
       );
     });

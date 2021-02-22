@@ -1,8 +1,8 @@
 import React from 'react';
 import './counter.css';
 
-const Counter = ({ value, stopIndicator }) => {
-  let cls = stopIndicator ? ('counter stopIndicator') : 'counter';
+const Counter = ({ value, resetStatus }) => {
+  let cls = (resetStatus === 0) ? ('counter stopIndicator') : 'counter';
 
   return (
     <div className={ cls }>

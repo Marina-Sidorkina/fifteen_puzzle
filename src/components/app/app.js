@@ -12,8 +12,7 @@ export default class App extends Component {
     this.state = {
       winner: false,
       gamesCount: 0,
-      movesCount: 0,
-      stopIndicator: true
+      movesCount: 0
     };
 
     this.checkWinner = this.checkWinner.bind(this);
@@ -47,8 +46,7 @@ export default class App extends Component {
       return {
         winner: false,
         movesCount: 0,
-        gamesCount: newValue,
-        stopIndicator: false
+        gamesCount: newValue
       }
     });
   }
@@ -57,8 +55,7 @@ export default class App extends Component {
     this.setState({
       winner: false,
       gamesCount: 0,
-      movesCount: 0,
-      stopIndicator: true
+      movesCount: 0
     });
   }
 
@@ -71,10 +68,9 @@ export default class App extends Component {
             />
           : <Board
               key={ this.state.gamesCount }
-              shuffle={ this.state.gamesCount }
+              resetStatus={ this.state.gamesCount }
               checkWinner={ this.checkWinner }
               onTileMove={ this.addMove }
-              stopIndicator={ this.state.stopIndicator }
             />
         }
         <LaunchButton
@@ -82,8 +78,7 @@ export default class App extends Component {
         />
         <Score
           counterValue={ this.state.movesCount }
-          gamesCount={ this.state.gamesCount }
-          stopIndicator={ this.state.stopIndicator }
+          resetStatus={ this.state.gamesCount }
           winner={ this.state.winner }
         />
       </div>
